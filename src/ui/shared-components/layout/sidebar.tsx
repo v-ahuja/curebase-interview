@@ -10,7 +10,7 @@ function isBaselinesV2Enabled() {
 }
 
 const navigation = [
-  { name: "Home", href: "/", icon: PiHouse, current: false },
+  { name: "Users", href: "/", icon: PiHouse, current: false },
   {
     name: "Companies",
     href: "/companies",
