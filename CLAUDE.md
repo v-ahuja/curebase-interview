@@ -11,7 +11,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Best Practices
 
+### UI
 
+1. For UI components, search and find the most appropriate shadcn components and download them.
+2. ALWAYS use tailwindcss for styling.
+3. When asked to take screenshots, use puppeteer and present them as output.
+4. Use tanstack forms with zod validation for form workflows.
 
 ## Architecture Overview
 
@@ -51,7 +56,7 @@ This is a Next.js application using the Pages Router with PostgreSQL and Drizzle
 
 ### UI Components
 
-- Use shadcn
+- Use shadcn components
 - Built on Radix UI primitives (Dialog, etc.)
 - Uses Tailwind CSS with custom utility classes
 - Component styling follows data-slot pattern for organization
