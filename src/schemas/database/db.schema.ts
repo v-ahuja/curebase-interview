@@ -14,6 +14,7 @@ import {
   boolean,
   pgPolicy,
   pgRole,
+  date,
 } from "drizzle-orm/pg-core";
 import { relations, sql } from "drizzle-orm";
 
@@ -35,8 +36,10 @@ export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   uuid: uuid("uuid").notNull().unique(),
   // .references(() => authUsers.id, { onDelete: 'cascade' }),
-  firstName: text("first_name"),
+  firstName: text("first_name").notNull(),
   lastName: text("last_name"),
+  dob: date({ mode: "date" }).notNull(),
+  address: text("address"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
