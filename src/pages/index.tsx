@@ -1,5 +1,16 @@
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@/ui/shared-components/dialog";
+import React from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,14 +22,43 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+function UsersDialog() {
+  return (
+    <Dialog>
+      <DialogTrigger>Open</DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogDescription>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <DialogClose>Cancel</DialogClose>
+          <DialogClose asChild>
+            <button>Continue</button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 export default function Home() {
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+
   return (
     <div
       className={`${geistSans.className} ${geistMono.className} items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 `}
     >
+      {/* {dialogOpen && <UsersDialog />} */}
       <div className="w-4xl space-y-4">
         <div className="flex flex-row-reverse w-full">
-          <button className="bg-slate-700 text-white text-sm px-2 py-2 rounded-md">
+          <button
+            className="bg-slate-700 text-white text-sm px-2 py-2 rounded-md"
+            onClick={() => setDialogOpen(true)}
+          >
             Add User
           </button>
         </div>
