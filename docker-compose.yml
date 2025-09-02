@@ -32,3 +32,19 @@ services:
       interval: 4s
       timeout: 2s
       retries: 5
+
+  app:
+    build: .
+    container_name: curebase-app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://vina:password@localhost:5400/curebase
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
